@@ -35,9 +35,9 @@ function Home() {
 
   async function handleDeleteMovie(id: number) {
     try {
-      await deleteMovie(id); // Call the deleteMovie function with the movie's ID
-      // Update the local state to remove the deleted movie
-      setMovies((prevMovies) => prevMovies.filter((movie) => movie.id !== id));
+      await deleteMovie(id);
+
+      // setMovies((prevMovies) => prevMovies.filter((movie) => movie.id !== id));
     } catch (error) {
       console.error("Error deleting movie:", error);
     }
