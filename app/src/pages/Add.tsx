@@ -55,10 +55,8 @@ function Add() {
           />
         </form>
 
-        <button onClick={movie}>Add Dummy Movie</button>
-
         <Link to="/">
-          <button>Submit</button>
+          <button onClick={movie}>Submit</button>
         </Link>
       </Layout>
     </>
