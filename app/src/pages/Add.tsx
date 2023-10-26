@@ -36,7 +36,7 @@ function Add() {
 
   return (
     <>
-      
+      <Layout title="addform">
         <h1>Add</h1>
         <form>
           <label>Enter Movie Name</label>
@@ -60,7 +60,7 @@ function Add() {
         <Link to="/">
           <button>Submit</button>
         </Link>
-      
+      </Layout>
     </>
   );
 }

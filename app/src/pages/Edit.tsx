@@ -11,7 +11,7 @@ function Edit() {
 
   return (
     <>
-      
+      <Layout title="EDIT FORM">
         <h1>Edit Form</h1>
         <form>
           <label>Enter Alter Name</label>
@@ -23,7 +23,7 @@ function Edit() {
         <Link to="/">
           <button>save </button>
         </Link>
-      
+      </Layout>
     </>
   );
 }
