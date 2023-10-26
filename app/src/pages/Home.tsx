@@ -34,6 +34,23 @@ function Home() {
     getMoviesFromAPI();
   }, [refresh]);
 
+  async function deleteMovie(id: number) {
+    try {
+      console.log(`Deleting movie with ID: ${id}`);
+    } catch (error) {
+      console.error("Error deleting movie:", error);
+    }
+  }
+
+  async function handleDeleteMovie(id: number) {
+    try {
+      await deleteMovie(id);
+      setMovies((prevMovies) => prevMovies.filter((movie) => movie.id !== id));
+    } catch (error) {
+      console.error("Error deleting movie:", error);
+    }
+  }
+
   return (
     <>
       <Layout title="home">
@@ -59,6 +76,14 @@ function Home() {
 
                   <Link to={`/edit/${m.id}`} className="pico-link">
                     <button>Edit</button>
+                  </Link>
+                  <Link to="/" className="pico-link">
+                    <button
+                      onClick={() => handleDeleteMovie(m.id)}
+                      className="pico-link"
+                    >
+                      Delete
+                    </button>
                   </Link>
                 </article>
               ))}
