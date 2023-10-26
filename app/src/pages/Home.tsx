@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getMovies } from "../services/api";
-
+import { getMovies, deleteMovie } from "../services/api"; // Import deleteMovie function
 import "@picocss/pico";
 import Layout from "../components/layout";
 
@@ -34,17 +33,10 @@ function Home() {
     getMoviesFromAPI();
   }, [refresh]);
 
-  async function deleteMovie(id: number) {
-    try {
-      console.log(`Deleting movie with ID: ${id}`);
-    } catch (error) {
-      console.error("Error deleting movie:", error);
-    }
-  }
-
   async function handleDeleteMovie(id: number) {
     try {
-      await deleteMovie(id);
+      await deleteMovie(id); // Call the deleteMovie function with the movie's ID
+      // Update the local state to remove the deleted movie
       setMovies((prevMovies) => prevMovies.filter((movie) => movie.id !== id));
     } catch (error) {
       console.error("Error deleting movie:", error);
@@ -77,14 +69,12 @@ function Home() {
                   <Link to={`/edit/${m.id}`} className="pico-link">
                     <button>Edit</button>
                   </Link>
-                  <Link to="/" className="pico-link">
-                    <button
-                      onClick={() => handleDeleteMovie(m.id)}
-                      className="pico-link"
-                    >
-                      Delete
-                    </button>
-                  </Link>
+                  <button
+                    onClick={() => handleDeleteMovie(m.id)}
+                    className="pico-link"
+                  >
+                    Delete
+                  </button>
                 </article>
               ))}
             </div>
